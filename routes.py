@@ -88,6 +88,12 @@ def profile_page(current_user):
     return render_template('profile.html', user=current_user)
 
 
+# Lightweight health check used by hosting providers and load balancers.
+@main_bp.route('/_health')
+def health_check():
+    return jsonify({'status': 'ok'})
+
+
 # --- Authentication Page Routes ---
 
 @auth_bp.route('/register')
